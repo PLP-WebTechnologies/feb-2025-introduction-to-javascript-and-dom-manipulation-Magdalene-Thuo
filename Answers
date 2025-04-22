@@ -1,0 +1,90 @@
+INDEX.html
+--------------------------------------------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JavaScript & DOM Basics</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1 id="main-title">Welcome to JavaScript DOM Manipulation</h1>
+  </header>
+
+  <main>
+    <section>
+      <p id="intro-text">Click the buttons below to interact with the page!</p>
+      <button id="change-text-btn">Change Text</button>
+      <button id="change-style-btn">Change Style</button>
+      <button id="add-element-btn">Add Element</button>
+      <button id="remove-element-btn">Remove Element</button>
+    </section>
+
+    <article id="dynamic-container">
+      <!-- Dynamic content will appear here -->
+    </article>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 DOM Learning Project</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+--------------------------------------------------
+Style.css
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+#main-title {
+  color: teal;
+}
+
+button {
+  margin: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+#dynamic-container {
+  margin-top: 20px;
+}
+
+----------------------------------------------------------
+// Change text content
+document.getElementById('change-text-btn').addEventListener('click', () => {
+  document.getElementById('intro-text').textContent = "The text has been changed dynamically!";
+});
+
+// Change CSS style
+document.getElementById('change-style-btn').addEventListener('click', () => {
+  document.getElementById('main-title').style.color = "crimson";
+  document.getElementById('main-title').style.fontSize = "2.5rem";
+});
+
+// Add an element
+document.getElementById('add-element-btn').addEventListener('click', () => {
+  const newPara = document.createElement('p');
+  newPara.textContent = "🎉 A new paragraph was added dynamically!";
+  newPara.id = "dynamic-para";
+  document.getElementById('dynamic-container').appendChild(newPara);
+});
+
+// Remove an element
+document.getElementById('remove-element-btn').addEventListener('click', () => {
+  const para = document.getElementById('dynamic-para');
+  if (para) {
+    para.remove();
+  } else {
+    alert("No element to remove!");
+  }
+});
+
+
